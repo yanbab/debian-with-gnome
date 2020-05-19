@@ -1,0 +1,46 @@
+# dconf defaults
+
+
+# Shell
+
+[org/gnome/shell]
+favorite-apps=['firefox-esr.desktop', 'libreoffice-writer.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Software.desktop']
+
+[org/gnome/desktop/notifications]
+show-banners=false
+
+[org.gnome.desktop.interface]
+clock-show-date=false
+
+[org/gnome/desktop/privacy]
+remember-recent-files true
+
+# Text Editor
+
+[org/gnome/gedit/preferences/ui]
+statusbat-visible=false
+
+[org/gnome/gedit/preferences/editor]
+tabs-size=2
+insert-spaces=true
+
+# Terminal
+
+[org/gnome/terminal/legacy]
+theme-variant='dark'
+
+# Nautilus
+
+[org/gnome/nautilus/preferences]
+click-policy='single'
+confirm-trash=false
+default-folder-viewer='list-view'
+
+[org/gnome/nautilus/list-view]
+use-tree-view=true
+default-zoom-level='small'
+
+[org/gnome/nautilus/icon-view]
+default-zoom-level='small'
+
+

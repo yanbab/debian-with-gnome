@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=VBox
+Comment=This session logs you into VBox
+Exec=/usr/bin/gnome-session
+TryExec=/usr/bin/gnome-session
+Type=Application
+DesktopNames=vbox:GNOME
+

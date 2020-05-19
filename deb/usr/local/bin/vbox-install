@@ -1,0 +1,106 @@
+#!/bin/bash
+# VBox Install script
+
+
+###
+### Config
+###
+
+INSTALL="
+  ubuntu-desktop-minimal
+  gnome-session
+  gnome-shell-extension-dash-to-panel
+  gnome-shell-extension-remove-dropdown-arrows
+  gnome-shell-extension-move-clock
+  gnome-shell-extension-no-annoyance
+"
+RECOMMENDS="
+  apache2
+  curl
+  php
+  samba
+"
+REMOVE="
+  plymouth
+  snapd
+  apport
+  file-roller
+"
+
+HIDE="
+  gnome-language-selector.desktop
+  im-config.desktop
+  gnome-session-properties.desktop
+  software-properties-gtk.desktop
+  software-properties-livepatch.desktop
+  software-properties-drivers.desktop
+  org.gnome.Evince.desktop
+  org.gnome.font-viewer.desktop
+  eog.desktop
+  yelp.desktop
+  info.desktop
+"
+
+LOCK="
+  vim.desktop
+  firefox.desktop
+  im-desktop.config
+  gnome-language-selector.desktop
+  gnome-session-properties.desktop
+  system-config-printer.desktop
+"
+
+### Install/Remove packages
+
+sudo apt update
+sudo apt upgrade -y
+sudo apt install -y --no-install-recommends $INSTALL $RECOMMENDS
+sudo apt remove  -y --purge  $REMOVE
+sudo apt autoremove -y
+sudo apt clean -y
+
+
+### Hide Apps
+
+sudo mkdir /usr/local/share/applications
+for APP in $HIDE
+do 
+  echo $APP
+  sudo cp /usr/share/applications/$APP /usr/local/share/applications/$APP
+  sudo chmod go+rw /usr/local/share/applications/$APP
+  echo "NoDisplay=true" >> /usr/local/share/applications/$APP
+done
+
+### Lock Apps
+
+# Add 'Core' Category to some apps
+# so we can't remove it with Software
+# (eg just click remove on "Startup Applications"
+#  in Ubuintu Software, and your system becomes broken)
+
+for APP in $LOCK
+do 
+  sed -i '/Categories/s/$/Core;/' /usr/local/share/applications/$APP
+done
+
+### Permissions
+
+# Allow user to access VirtualBox shared folders
+
+sudo usermod -G vboxsf -a $USER
+sudo usermod -G vbox -a $USER
+
+# Allow user to access Web Server data
+
+sudo usermod -G www-data -a $USER
+
+# Allow user access to mysql (root/ no password)
+
+sudo mysql -u root -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '';"
+
+# Done
+
+echo ""
+echo "All Done !! Please restart your system."
+
+

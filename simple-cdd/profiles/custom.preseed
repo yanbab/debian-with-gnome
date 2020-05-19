@@ -1,0 +1,57 @@
+#
+# Debian-installer configuration
+#
+# Reduces installation process steps
+# 
+
+
+# Localization
+
+#d-i debian-installer/locale string en_US
+# Locales needed by gnome-initial-setup
+d-i localechooser/supported-locales multiselect en_US.UTF-8, en_GB.UTF-8, es_ES.UTF-8, fr_FR.UTF-8, ar_EG.UTF-8, de_DE.UTF-8, ja_JP.UTF-8, ru_RU.UTF-8, zh_CN.UTF-8
+
+# Keyboard
+
+d-i keymap select us
+# keyboard layouts :
+#console-data console-data/keymap/qwerty/layout select US american
+#console-data console-data/keymap/family select qwerty
+#console-common console-data/keymap/family select qwerty
+
+# CLock 
+
+d-i time/zone string US/Pacific 
+
+# Partition disk
+
+d-i grub-installer/confirm  boolean true
+d-i grub-installer/bootdev  string default
+
+# Default root password, no user
+
+d-i passwd/root-password password root
+d-i passwd/root-password-again password root
+d-i passwd/make-user boolean false
+
+# Samba
+
+d-i samba-common/workgroup string WORKGROUP
+d-i samba-common/dhcp boolean false
+
+# Media scanning
+
+d-i apt-setup/cdrom/set-first  boolean false
+base-config apt-setup/another boolean false
+
+# APT setup
+
+apt-mirror-setup apt-setup/use_mirror boolean false
+d-i apt-setup/services-select multiselect
+d-i apt-setup/non-free  boolean true
+d-i apt-setup/contrib boolean true
+
+# Popularity-contest
+
+d-i popularity-contest/participate boolean false
+

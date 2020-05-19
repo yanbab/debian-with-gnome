@@ -1,0 +1,19 @@
+#!/bin/sh
+#
+# Post install script
+#
+
+# Default groups
+echo 'EXTRA_GROUPS="users sudo sambashare vboxsf nogroup"' >> /etc/adduser.conf
+echo 'ADD_EXTRA_GROUPS=1' >> /etc/adduser.conf
+
+# Samba create mask
+
+echo "deb http://ftp.fr.debian.org/debian/ sid main contrib non-free" > /etc/apt/sources.list
+
+# echo "#!/bin/sh
+# apt install gnome-getting-started-docs -y" > /etc/init.d/vbox ; chmod +x /etc/init.d/vbox
+
+chroot /target
+apt update
+apt install gnome-getting-started-docs gnome-system-monitor -y

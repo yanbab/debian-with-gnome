@@ -1,2 +1,4 @@
-# debian-with-gnome
+# Debian with GNOME
+
 Debian SID image with latest GNOME
+

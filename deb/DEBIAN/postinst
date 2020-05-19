@@ -1,0 +1,5 @@
+#!/bin/bash
+echo "Update dconf"
+dconf update
+echo "Update grub"
+update-grub

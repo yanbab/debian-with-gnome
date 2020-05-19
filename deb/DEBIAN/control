@@ -1,0 +1,10 @@
+Package: debian-with-gnome
+Architecture: all
+Maintainer: @vbox
+Priority: optional
+Version: 0.1
+Depends: gnome-shell, gnome-session, gnome-software, nautilus, gnome-terminal
+Recommends: gedit
+Section: metapackages
+Description: Debian with GNOME
+ Latest Debian SID and GNOME Shell

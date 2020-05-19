@@ -1,0 +1,60 @@
+#
+# Custom packages selection
+#
+
+## Debian
+
+fwupd
+sudo
+#samba
+#smbclient
+task-ssh-server
+command-not-found
+bash-completion
+
+## FreeDesktop
+
+pulseaudio
+xdg-user-dirs
+
+## Xorg
+
+xorg
+# workaround http://bugs.debian.org/405639
+xserver-xorg-input-all
+xserver-xorg-video-all
+
+## GNOME Core 
+
+gdm3
+gnome-shell
+gnome-session
+gnome-control-center
+gnome-online-accounts
+gnome-initial-setup
+network-manager-gnome
+gkbd-capplet
+gvfs-backends
+#gnome-user-docs
+#gnome-getting-started-docs
+
+## GNOME Core Apps
+
+gnome-software
+nautilus
+nautilus-admin
+nautilus-share
+nautilus-extension-gnome-terminal
+gnome-terminal
+gnome-system-monitor
+gedit
+yelp
+
+## Gnome Shell extensions
+
+## Web Browser 
+
+#firefox
+#chromium
+
+
